@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <math.h>
+
+using namespace std;
+
+int main(){
+
+	int test;
+	cin >> test;
+	while(test-->0){
+		
+		int size;
+		cin >> size;
+
+		vector<int> parking(size);
+		
+		for(auto &p : parking){
+			cin >> p;
+		}
+		
+		sort(parking.begin(), parking.end());
+
+		int lowest=0;
+
+		for(int i=parking.front(); i<=parking.back(); i++){
+			int temp = 0;
+			for(auto p : parking){
+				temp += abs(i-p);
+			}
+			if(temp > lowest)
+				lowest = temp;
+		}
+
+		cout << lowest << endl;
+
+	}
+	
+	return 0;
+}
